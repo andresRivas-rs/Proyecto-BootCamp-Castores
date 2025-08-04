@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visualización Energía Solar vs Hidroeléctrica</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body class="bg-light">
+
+    <header class="bg-primary text-white text-center py-4">
+    <h1>Producción de Energía Solar vs Hidroeléctrica en Colombia (2000–2022)</h1>
+    <p class="mb-0">Esta sección de la página, permite visualizar los datos según las fuentes mencionadas en el pie de la tabla, adicional permite leer tus datos desde un archivo .JSON o .CSV</p>
+  </header>
+
+  <div class="container py-5">
+
+    <!-- Gráfico -->
+    <canvas id="graficoEnergia" height="100"></canvas>
+
+    <!-- Tabla de datos -->
+    <div class="table-responsive mt-5">
+      <h4 class="text-center mb-3">Tabla de Datos</h4>
+      <table class="table table-bordered table-striped text-center">
+        <thead class="table-dark">
+          <tr>
+            <th>Año</th>
+            <th>Solar (MW)</th>
+            <th>Hidroeléctrica (MW)</th>
+          </tr>
+        </thead>
+        <tbody id="tablaDatos">
+          <!-- Se llena con JS -->
+        </tbody>
+      </table>
+      <p class="text-muted mt-2">FUENTES: *UPME (Unidad de Planeación Minero Energética): Reportes de capacidad instalada por tipo de fuente.
+*XM: Estadísticas de capacidad instalada en el Sistema Interconectado Nacional (SIN).
+*IRENA (International Renewable Energy Agency): Renewable Capacity Statistics</p>
+    </div>
+  </div>
+
+      <!-- Cargar archivo -->
+    <div class="mt-4 text-center">
+      <label for="archivoInput" class="form-label">Cargar archivo de datos (.json o .csv) para visualización</label>
+      <input type="file" id="archivoInput" accept=".json, .csv" class="form-control w-50 mx-auto" />
+      <p class="text-muted mt-2">Formato esperado: año, solar, hidro</p>
+    </div>
+
+    <div class="container py-5">
+    <h2 class="text-center mb-4">Calculadora de Energía Renovable</h2>
+    <p class="text-center mt-2">Ingresa el consumo eléctrico mensual de tu hogar</p>
+
+    <div class="card mx-auto" style="max-width: 500px;">
+      <div class="card-body">
+        <form id="formCalculadora">
+          <div class="mb-3">
+            <label for="consumoInput" class="form-label">Consumo mensual (kWh)</label>
+            <input type="number" class="form-control" id="consumoInput" placeholder="Ejemplo: 300" required min="0">
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Calcular</button>
+        </form>
+
+        <div id="resultado" class="mt-4 text-center fw-bold fs-5"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/scripts.js"></script>
+</body>
+</html>
